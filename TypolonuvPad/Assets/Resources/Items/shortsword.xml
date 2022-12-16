@@ -1,0 +1,5 @@
+<InventoryItem Id="ShortSword" ShowName="Kratky mec" Type="Weapon">
+	<Damage Base="12" Max="10" Mult="2.0" />
+	<Armor Base="1" Max="2" Mult="1.0" />
+	<Text>Kratky mec umoznuje i moznost se trochu branit.</Text>
+</InventoryItem>

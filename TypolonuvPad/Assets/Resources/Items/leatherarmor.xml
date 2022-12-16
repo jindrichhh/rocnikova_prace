@@ -1,0 +1,5 @@
+<InventoryItem Id="LeatherArmor" ShowName="Kozena tunika" Type="Armor">
+	<Armor Base="5" Max="3" Mult="1.0" />
+	<Attack Base="2" Max="1" Mult="1.1" />
+	<Text>Lepsi nez nic, je to jako tuzsi druha kuze poskytujici zakladni ochranu.</Text>
+</InventoryItem>

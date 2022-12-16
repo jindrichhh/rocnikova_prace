@@ -1,0 +1,5 @@
+<InventoryItem Id="StrongArmor" ShowName="Pobite zelezne brneni" Type="Armor">
+	<Armor Base="25" Max="5" Mult="2.0" />
+	<Attack Base="-5" Max="2" Mult="0.4" />
+	<Text>Zelezne brneni je trochu dost tezke, zpomaluje v pohybu avsak ma slusnou obranyschopnost.</Text>
+</InventoryItem>

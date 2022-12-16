@@ -1,0 +1,5 @@
+<InventoryItem Id="Gladius" ShowName="Gladius" Type="Weapon">
+	<Damage Base="20" Max="10" Mult="3.5" />
+	<Armor Base="1" Max="2" Mult="0.5" />
+	<Text>Standartni mec rimskeho vojska. I kdyz svoji velikosti nebudi hruzu, legionari se sesypou na nepritele jako vosy a ten pada k zemi mnoha cetnymi ranami.</Text>
+</InventoryItem>

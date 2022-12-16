@@ -1,0 +1,4 @@
+<InventoryItem Id="HardLeatherArmor" ShowName="Prosivana kozena tunika" Type="Armor">
+	<Armor Base="10" Max="4" Mult="1.5" />
+	<Text>Vystuzena kozena tunika poskytuje jak volnost pohybu tak i slusnou obranu.</Text>
+</InventoryItem>

@@ -1,0 +1,5 @@
+<InventoryItem Id="Pike" ShowName="Kopi" Type="Weapon">
+	<Damage Base="30" Max="30" Mult="1.0" />
+	<Armor Base="5" Max="2" Mult="1.5" />
+	<Text>Kopi je vyborna zbran pro drzeni si odstupu protivnika od tela.</Text>
+</InventoryItem>

@@ -1,0 +1,4 @@
+<InventoryItem Id="Potion" ShowName="Lecivy lektvar" Type="Consumable">
+	<Heal Base="5" Max="5" Mult="5" />
+	<Text>Galsky lecivy lekvar, smrdi ale je neskodny. Jeho ucinky se dosti lisi podle sily.</Text>
+</InventoryItem>

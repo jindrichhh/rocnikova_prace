@@ -1,0 +1,3 @@
+<InventoryItem Id="Firewood" ShowName="Dřevo na podpal" Type="Material">
+	<Text>Drevo je potreba k taboreni. Taborit lze jen v taboristi. K odpocinku (mimo taboriste) neni drevo potreba.</Text>
+</InventoryItem>

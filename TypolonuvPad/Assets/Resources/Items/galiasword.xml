@@ -1,0 +1,5 @@
+<InventoryItem Id="GaliaSword" ShowName="Legendarni mec Galie" Type="Weapon">
+	<Damage Base="50" Max="30" Mult="2.1" />
+	<Armor Base="1" Max="2" Mult="2.5" />
+	<Text>Bajny galsky mec napusteny druidskou energii. Jediny sveho druhu by mel na porazku silnych nepratel stacit. Nejlepsi predmet jaky si lze prat.</Text>
+</InventoryItem>

@@ -1,0 +1,5 @@
+<InventoryItem Id="IronArmor" ShowName="Zelezne brneni" Type="Armor">
+	<Armor Base="15" Max="3" Mult="1.0" />
+	<Attack Base="-10" Max="1" Mult="1.1" />
+	<Text>Tezke brneni, tezka pohoda.</Text>
+</InventoryItem>

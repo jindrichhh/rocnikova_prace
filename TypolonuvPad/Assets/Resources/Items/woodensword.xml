@@ -1,0 +1,5 @@
+<InventoryItem Id="WoodenSword" ShowName="Dreveny mec" Type="Weapon">
+	<Damage Base="2" Max="5" Mult="2.0" />
+	<Armor Base="1" Max="1" Mult="0.0" />
+	<Text>Dreveny mec se kterym vojaci bezne trenuji. Tupy, dreveny, ale lepsi nez nic.</Text>
+</InventoryItem>
