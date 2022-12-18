@@ -16,28 +16,47 @@ public class PawnInventory
     InventoryItem Weapon, Armor;
 
 
-    public PawnInventory(string pawnid, PawnStat stats, InventoryController gui = null) {
+    public PawnInventory(PawnSetup model, PawnStat stats, InventoryController gui = null) {
 
         Stats = stats;
         InvCtrl = gui;
         Master = MasterController.Singleton;
 
-        // TODO: fetch data by id
-
         Items = new List<InventoryItem>(INV_SIZE + 2);
 
-        var weapon = Master.SpawnItem("WoodenSword", Random.Range(1,3));
-        AddItem(weapon);
-        //weapon = Master.SpawnItem("WoodenSword", Random.Range(4, 5));
+        foreach (var i in model.Items) {
+
+            Debug.Log("item i: " + i.Id);
+            i.RollChances();
+            if (i.Confirmed) {
+
+                var lvl = Random.Range(0.4f, 1.0f) * stats.Leveling.CurrentLevel;
+                lvl += 1;
+                var spawn = Master.SpawnItem(i.Id);
+                if (spawn.Type != InventoryItem.ItemType.Material) {
+
+                    spawn.Init((int)lvl);
+                }
+                
+                AddItem(spawn);
+
+                if (i.Equip) {
+
+                    TakeAction(spawn, true);
+                }
+            }
+        }
+
+        //var weapon = Master.SpawnItem("WoodenSword", Random.Range(1,3));
         //AddItem(weapon);
 
-        var armor = Master.SpawnItem("LeatherArmor", Random.Range(1, 3));
-        AddItem(armor);
+        //var armor = Master.SpawnItem("LeatherArmor", Random.Range(1, 3));
+        //AddItem(armor);
 
-        AddItem(Master.SpawnItem("Meat"));
-        AddItem(Master.SpawnItem("Firewood"));
-        AddItem(Master.SpawnItem("Firewood"));
-        AddItem(Master.SpawnItem("Potion", Random.Range(1, 3)));
+        //AddItem(Master.SpawnItem("Meat"));
+        //AddItem(Master.SpawnItem("Firewood"));
+        //AddItem(Master.SpawnItem("Firewood"));
+        //AddItem(Master.SpawnItem("Potion", Random.Range(1, 3)));
 
         
         if (InvCtrl)
@@ -48,17 +67,23 @@ public class PawnInventory
             InvCtrl.SetBasicInfoText("Levym tlacitkem mysi pouzijete nebo vymenite predmety");
             InvCtrl.SetInvSizeText(INV_SIZE, 0);
             InvCtrl.SetTooltipText("", "");
-
-
         }
     }
 
 
+    // return all items
+    public InventoryItem[] GetItems() {
+
+        return Items.ToArray();
+    }
+
+    // Finds first item of id
     public InventoryItem FindItem(string id) {
 
         return Items.Where(x => x.Id.ToLower() == id.ToLower()).FirstOrDefault();
     }
 
+    // Add item to inventory
     public bool AddItem(InventoryItem item) {
 
         if (Items.Capacity > Items.Count) {
@@ -75,6 +100,7 @@ public class PawnInventory
         return false;
     }
 
+    // Remove item from inventory
     public void RemoveItem(InventoryItem item) {
 
         Items.Remove(item);

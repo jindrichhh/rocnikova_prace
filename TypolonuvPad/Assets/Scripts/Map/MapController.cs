@@ -29,6 +29,7 @@ public class MapController : MonoBehaviour
 
     PlayerController Player;
     GameControlller Game;
+    CombatController Combat;
 
 
     private void Awake()
@@ -61,10 +62,11 @@ public class MapController : MonoBehaviour
 
         Player = PlayerController.Singleton;
         Game = GameControlller.Singleton;
+        Combat = CombatController.Singleton;
         RevealSur(Player.Coords);
     }
 
-
+    // Get cell from map on coordinates
     public MapCell GetCell(int x, int y) {
 
         try
@@ -85,6 +87,7 @@ public class MapController : MonoBehaviour
         return GetCell(v3.x, v3.y);
     }
 
+    // Moves player avatar
     public void MovePlayer(int dir) {
 
         Game = GameControlller.Singleton;
@@ -140,11 +143,19 @@ public class MapController : MonoBehaviour
         // sub point
         Player.Pawn.Stats.ActionPoints.Add(-1);
 
+        // Visuals
         HudPanelController.Singleton.RefreshData(Player.Pawn.Stats);
-        CheckTileAction();
         RevealSur(Player.Coords);
+
+        // Triggers
+        CheckTileAction();
+        if (Combat.Encounter()) {
+
+            Combat.SetupCombat();
+        }
     }
 
+    // Reveal surrouning tiles (FOW)
     public void RevealSur(Vector3Int coords) {
 
         for (int i = -1; i < 2; i++) {
@@ -160,12 +171,14 @@ public class MapController : MonoBehaviour
         }
     }
 
+    // Check if can camp here
     public bool IsCamp(Vector3Int coords) {
 
         var cell = GetCell(coords);
         return cell.HasTile(PoiTm);
     }
 
+    // Special tiles - triggering action
     private void CheckTileAction() {
 
         var coords = Player.Coords;
@@ -242,7 +255,8 @@ public class MapController : MonoBehaviour
 
                 case "base":
 
-                    Game.Log("Topolon: Pøiprav se na smrt!");
+                    Game.Log("Typolon: Pøiprav se na smrt!");
+                    Combat.BossFight();
 
                     break;
 

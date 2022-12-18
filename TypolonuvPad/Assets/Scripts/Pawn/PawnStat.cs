@@ -56,7 +56,7 @@ public class PawnStat {
             {
 
                 CurrentLevel++;
-                PointsRemaining += 5;
+                PointsRemaining += 6;
 
                 ExpPoints = 0;
             }
@@ -161,13 +161,15 @@ public class PawnStat {
 
     public Stat ActionPoints;
 
+    public int LastDamage;
+
     public PawnStat()
     {
         Leveling = new Stat.Level();
     }
 
 
-
+    // Heals for amount
     public void Heal(int hp)
     {
         var lasthp = HitPoints.Current;
@@ -175,6 +177,7 @@ public class PawnStat {
         GameControlller.Singleton.PosLog("Léèení: +" + (HitPoints.Current - lasthp));
     }
 
+    // Heals percantage of capacity
     public void Heal(float perc)
     {
 
@@ -182,7 +185,8 @@ public class PawnStat {
         Heal((int)hp);
     }
 
-    public void TakeDamage(int damage, bool ignore_armor = false) {
+    // Take damage, can ignore defence/armor
+    public bool TakeDamage(int damage, bool ignore_armor = false) {
 
         if (!ignore_armor) {
 
@@ -190,7 +194,9 @@ public class PawnStat {
             damage = Mathf.Clamp(damage, 5, 200);
         }
 
-        HitPoints.Add(-damage);
+        LastDamage = damage;
+
+        return HitPoints.IsZero(-damage);
     }  
 }
 

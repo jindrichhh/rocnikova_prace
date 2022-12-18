@@ -30,22 +30,25 @@ public class CampingScreenController : MonoBehaviour
         
     }
 
-
+    // Set background - camping
     public void SetBack_Camp() {
 
         StartCoroutine(SetBack(CampSprite, "Táboøení . . ."));
     }
 
+    // Set background - camping with food
     public void SetBack_CampFood()
     {
         StartCoroutine(SetBack(CampFoodSprite, "Táboøení s bohatou veèeøí . . ."));
     }
 
+    // Set background - sleeping with no fire
     public void SetBack_Forest()
     {
         StartCoroutine(SetBack(ForestSprite, "Spánek bez ohnì"));
     }
 
+    // Sets background
     private IEnumerator SetBack(Sprite sprite, string text) {
 
         Background.enabled = true;

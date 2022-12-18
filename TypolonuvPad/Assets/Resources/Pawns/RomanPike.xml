@@ -1,0 +1,16 @@
+<PawnSetup Id="RomanPike" Model="Roman" ShowName="Římský kopiník" Type="2" Rank="1">
+
+	<Hp Base="10" Max="10" Mult="1.5" />
+	<Attack Base="10" Max="3" Mult="1" />
+	<Armor Base="1" Max="0" Mult="1.2" />
+	<Exp Base="150" Max="50" Mult="1.5"/>
+
+	<Item Id="Meat" Poss="0.5" Drop="0.2"/>
+	<Item Id="Firewood" Poss="0.5" Drop="1.0"/>
+	<Item Id="Pike" Poss="1.0" Drop="0.3"/>
+	<Item Id="Potion" Poss="0.3" Drop="0.1"/>
+	<Item Id="Potion" Poss="0.3" Drop="0.1"/>
+	<Item Id="HardLeatherArmor" Poss="0.3" Drop="0.3"/>
+	<Item Id="LeatherArmor" Poss="0.6" Drop="0.4"/>
+
+</PawnSetup>

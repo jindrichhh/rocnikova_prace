@@ -64,6 +64,8 @@ public class CombatAttributesPanelController : MonoBehaviour
 
 
     // Refresh UI
+
+    // Refresh visuals
     public void RefreshData(PawnStat.Stat hp, PawnStat.Stat armor, PawnStat.Stat att) {
 
         Player = PlayerController.Singleton;

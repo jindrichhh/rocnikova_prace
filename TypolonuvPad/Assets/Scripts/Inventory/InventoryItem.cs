@@ -82,11 +82,11 @@ public class InventoryItem
 
     public int Level = 0;
 
-
+    // Inits item
     public void Init(int level = 0) {
 
         Level = level;
-        if (Level != 0) {
+        if (Level != 0 && Type != ItemType.Material) {
 
             if (Damage != null) {
 
@@ -107,7 +107,7 @@ public class InventoryItem
         }
     }
 
-
+    // Deserialize item from file
     public static InventoryItem Deserialize(string path) {
 
         return Utils.FileOps.Deserialize<InventoryItem>(path);

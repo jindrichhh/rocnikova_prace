@@ -11,17 +11,29 @@ public class PawnController : MonoBehaviour
     public PawnStat Stats;
     public PawnInventory Inventory;
 
+    public PawnSetup Model;
     public string PawnName;
     public string PawnId;
+    public bool Dead = false;
+    public bool IsPlayer;
 
 
-    private void Awake()
-    {
-        Stats = new PawnStat();
-        Inventory = new PawnInventory(PawnId, Stats, InvCtrl);
-        
+    // Inits pawn by id 
+    public void Init(string id) {
+
+        Model = MasterController.Singleton.Library.Get<PawnSetup>(AssetLibrary.LibraryType.Pawns, id);
+
+        if(Model == null)
+            throw new System.Exception("Unknown PAWN id: " + id);
+
+        PawnId = id;
+        PawnName = Model.ShowName;
+        IsPlayer = id == "Player";
+
+        if (Stats == null)
+            Stats = new PawnStat();
+        Inventory = new PawnInventory(Model, Stats, InvCtrl);
+
     }
-
-
 
 }

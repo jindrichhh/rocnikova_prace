@@ -1,0 +1,13 @@
+<PawnSetup Id="Typolon" Model="Centurion" ShowName="Císař Typolon" Type="2" Rank="3">
+
+	<Hp Base="1" Max="1" Mult="1.5" />
+	<Attack Base="100" Max="3" Mult="1" />
+	<Armor Base="100" Max="0" Mult="1.2" />
+	<Exp Base="2500" Max="500" Mult="1.5"/>
+
+	<Item Id="Gladius" Poss="1.0" Drop="0.3"/>
+	<Item Id="Potion" Poss="0.3" Drop="0.1"/>
+	<Item Id="Potion" Poss="0.3" Drop="0.1"/>
+	<Item Id="StrongArmor" Poss="1.0" Drop="0.0"/>
+
+</PawnSetup>

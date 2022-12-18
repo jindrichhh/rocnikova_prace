@@ -1,0 +1,17 @@
+<PawnSetup Id="Centurion" Model="Centurion" ShowName="Hrdý říman" Type="2" Rank="2">
+
+	<Hp Base="60" Max="10" Mult="1.5" />
+	<Attack Base="30" Max="3" Mult="1" />
+	<Armor Base="1" Max="0" Mult="1.2" />
+	<Exp Base="350" Max="50" Mult="1.5"/>
+
+	<Item Id="Meat" Poss="0.5" Drop="0.2"/>
+	<Item Id="Firewood" Poss="0.5" Drop="1.0"/>
+	<Item Id="ShortSword" Poss="1.0" Drop="0.3"/>
+	<Item Id="Gladius" Poss="0.2" Drop="0.3"/>
+	<Item Id="Potion" Poss="0.3" Drop="0.1"/>
+	<Item Id="Potion" Poss="0.3" Drop="0.1"/>
+	<Item Id="IronArmor" Poss="0.3" Drop="0.3"/>
+	<Item Id="StrongArmor" Poss="0.1" Drop="0.1"/>
+
+</PawnSetup>

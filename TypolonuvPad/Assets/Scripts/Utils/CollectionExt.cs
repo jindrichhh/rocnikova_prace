@@ -28,6 +28,16 @@ namespace Utils {
             return master.Except(excluded).ToList();
         }
 
+
+        // Get random item form list
+        public static T GetRandomItem<T>(List<T> list)
+        {
+            if (list.Count == 0)
+                throw new System.Exception("List is empty");
+
+            var i = Random.Range(0, list.Count);
+            return list[i];
+        }
     }
 
 }

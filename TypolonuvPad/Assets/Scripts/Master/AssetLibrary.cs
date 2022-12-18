@@ -9,6 +9,7 @@ public class AssetLibrary : MonoBehaviour
     
         Items,
         Graphics,
+        Pawns,
     }
 
 
@@ -19,7 +20,8 @@ public class AssetLibrary : MonoBehaviour
         public System.Type Type;
         public string[] Paths;
 
-        Dictionary<string, object> Objects;
+        public Dictionary<string, object> Objects;
+
 
         public Library(LibraryType lt) {
 
@@ -67,6 +69,19 @@ public class AssetLibrary : MonoBehaviour
                         Objects.Add(asset.name, asset as Sprite);
 
                         //Debug.Log("Resources: Added graphics: " + asset.name);
+                        break;
+
+                    case LibraryType.Pawns:
+
+                        o = PawnSetup.Deserialize(path);
+                        var pawn = (PawnSetup)o;
+                        if (!Objects.ContainsKey(pawn.Id))
+                        {
+
+                            Objects.Add(pawn.Id, pawn);
+                        }
+
+                        //Debug.Log("Resources: Added item: " + item.Id);
                         break;
 
                     default:
@@ -127,6 +142,8 @@ public class AssetLibrary : MonoBehaviour
                 Utils.FileOps.ResourcePaths("Items"));
             InitLib(LibraryType.Graphics,
                 Utils.FileOps.ResourcePathsRec("Graphics"));
+            InitLib(LibraryType.Pawns,
+                Utils.FileOps.ResourcePaths("Pawns"));
         }
 
         StartCoroutine(LoadAssets());
@@ -142,6 +159,12 @@ public class AssetLibrary : MonoBehaviour
     private void InitLib(LibraryType lt, string[] paths) {
 
         Lib.Add(lt, new Library(lt) { Paths = paths });
+    }
+
+    // Get whole library of type
+    public Library GetLib(LibraryType lt) {
+
+        return Lib[lt];
     }
 
     // Start loading assets to library
@@ -171,6 +194,9 @@ public class AssetLibrary : MonoBehaviour
 
             case LibraryType.Graphics:
                 return typeof(Sprite);
+
+            case LibraryType.Pawns:
+                return typeof(PawnSetup);
 
             default:
                 return typeof(object);

@@ -23,12 +23,13 @@ public class GameControlller : MonoBehaviour
             Flags = new Dictionary<string, bool>();
         }
 
-
+        // Register new flag
         public void AddFlag(string key) {
 
             Flags.Add(key, false);
         }
 
+        // Set registered flag to value
         public void SetFlag(string key, bool bit) {
 
             if (!Flags.ContainsKey(key))
@@ -37,6 +38,7 @@ public class GameControlller : MonoBehaviour
             Flags[key] = bit;
         }
 
+        // Check if registered flag is set
         public bool Isset(string key) {
 
             if (!Flags.ContainsKey(key))
@@ -49,7 +51,8 @@ public class GameControlller : MonoBehaviour
 
     public static GameControlller Singleton;
     public static GameFlag Flags;
-    
+    public static int Kills = 0;
+
 
     [SerializeField]
     LoadingScreenController Lsc;
@@ -60,6 +63,14 @@ public class GameControlller : MonoBehaviour
     [SerializeField]
     GameObject LogContainer;
 
+    [SerializeField]
+    GameObject VictoryOverlay;
+    [SerializeField]
+    TextMeshProUGUI KillText;
+    [SerializeField]
+    TextMeshProUGUI ItemText;
+    [SerializeField]
+    TextMeshProUGUI LevelText;
 
     MapController Map;
     PlayerController Player;
@@ -82,11 +93,11 @@ public class GameControlller : MonoBehaviour
         Flags.AddFlag("Topolon");
 
         Lsc.gameObject.SetActive(true);
+        
     }
 
     void Start()
     {
-        HudPanelController.Singleton.RefreshData(Player.Pawn.Stats);
         Log("Hra spuštìna");
     }
 
@@ -111,8 +122,11 @@ public class GameControlller : MonoBehaviour
         Lsc.gameObject.SetActive(false);        
     }
 
+    // End of turn on map
     public void EndTurn() {
 
+        Map = MapController.Singleton;
+        Player = PlayerController.Singleton;
         Hud = HudPanelController.Singleton;
 
         var inv = Player.Pawn.Inventory;
@@ -150,7 +164,7 @@ public class GameControlller : MonoBehaviour
         Hud.RefreshData(Player.Pawn.Stats);
     }
 
-
+    // Logs message to infopanel
     public TextMeshProUGUI Log(string fmt, params object[] pars) {
 
         var item = Instantiate(LogItemModel);
@@ -162,15 +176,29 @@ public class GameControlller : MonoBehaviour
         return text;
     }
 
+    // Logs warning to infopanel
     public void Warn(string fmt, params object[] pars) {
 
         var text = Log(fmt, pars);
         text.color = Utils.UnityHelper.FromSysColor(0xFFEE9B01);
     }
 
+    // Logs possitive message to infopanel
     public void PosLog(string fmt, params object[] pars) {
 
         var text = Log(fmt, pars);
         text.color = Utils.UnityHelper.FromSysColor(0xFF00FF00);
+    }
+
+    // End of game, player won
+    public void EndGameVictory() {
+
+        if (Player == null)
+            Player = PlayerController.Singleton;
+
+        KillText.text = "Zabitých nepøátel: " + Kills;
+        ItemText.text = "Nalezených pøedmìtù: " + InventoryController.Found;
+        LevelText.text = "Hráèova úroveò: " + Player.Pawn.Stats.Leveling.CurrentLevel;
+        VictoryOverlay.gameObject.SetActive(true);
     }
 }

@@ -1,0 +1,15 @@
+<PawnSetup Id="Player" ShowName="Hráč" Type="0" Rank="0">
+	<!--Player stats are hardcoded -->
+	<Hp Base="0" Max="0" Mult="0" />
+	<Attack Base="0" Max="0" Mult="0" />
+	<Armor Base="0" Max="0" Mult="0" />
+
+	<Item Id="WoodenSword" Poss="1.0" Equip="1.0" />
+	<Item Id="LeatherArmor" Poss="1.0" Equip="1.0" />
+	<Item Id="Meat" Poss="1.0" />
+	<Item Id="Firewood" Poss="1.0"  />
+	<Item Id="Meat" Poss="0.1" />
+	<Item Id="Firewood" Poss="0.4" />
+	<Item Id="Potion" Poss="1.0" />
+	<Item Id="Potion" Poss="0.1" />
+</PawnSetup>

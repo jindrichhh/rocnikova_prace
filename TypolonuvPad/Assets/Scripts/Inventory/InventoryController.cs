@@ -7,6 +7,8 @@ using System.Linq;
 public class InventoryController : MonoBehaviour
 {
 
+    public static int Found = 0;
+
     [SerializeField]
     InventorySlotController[] Slots;
     [SerializeField]
@@ -42,25 +44,31 @@ public class InventoryController : MonoBehaviour
         ArmorSlot.Type = InventoryItem.SlotType.Armor;
     }
 
+
+    // Set text in help panel
     public void SetBasicInfoText(string text) {
 
         BasicInfoText.text = text;
     }
 
+    // Fillup tooltip
     public void SetTooltipText(string title, string text)
     {
         TooltipTitleText.text = title;
         TooltipDescText.text = text;
     }
 
+    // Sets size text
     public void SetInvSizeText(int total, int occupied) {
 
         Total = total;
         InvSizeText.text = string.Format("{0} / {1}", occupied, total);
     }
 
-
+    // Adds item to inventory
     public void AddItem(InventoryItem item) {
+
+        Found++;
 
         var freeslots = GetFreeGridSlots();
         if (freeslots.Count == 0) {
@@ -74,7 +82,7 @@ public class InventoryController : MonoBehaviour
         SetInvSizeText(Total, Total - freeslots.Count + 1);
     }
 
-
+    // Remove item from inventory
     public void RemoveItem(InventoryItem item) {
 
         var slot = Utils.CollectionExt.Exclude(Slots.ToList(), GetFreeGridSlots()).Where(x => x.Item == item).First();
@@ -85,11 +93,13 @@ public class InventoryController : MonoBehaviour
         }
     }
 
+    // Get all free slots
     public List<InventorySlotController> GetFreeGridSlots() {
 
         return Slots.Where(x => x.FreeSlot).ToList();
     }
 
+    // Swap with weapon slot
     public void SwapWeapon(InventoryItem grid = null) {
 
         var freeslots = GetFreeGridSlots();
@@ -126,6 +136,7 @@ public class InventoryController : MonoBehaviour
         }
     }
 
+    // Swap with armor slot
     public void SwapArmor(InventoryItem grid = null) {
 
         var freeslots = GetFreeGridSlots();

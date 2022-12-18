@@ -31,9 +31,4 @@ public class PanelController : MonoBehaviour
         gameObject.SetActive(!gameObject.activeInHierarchy);
     }
 
-
-    //public virtual void RefreshData() { 
-    
-
-    //}
 }

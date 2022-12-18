@@ -1,0 +1,14 @@
+<PawnSetup Id="Deer" Model="Deer" ShowName="Jelen" Type="1" Rank="1">
+
+	<Hp Base="100" Max="20" Mult="1.3" />
+	<Attack Base="20" Max="3" Mult="1" />
+	<Armor Base="2" Max="1" Mult="1.2" />
+	<Exp Base="180" Max="15" Mult="1.5"/>
+
+	<Item Id="Meat" Poss="1.0" Drop="1.0"/>
+	<Item Id="Meat" Poss="0.5" Drop="0.2"/>
+	<Item Id="Meat" Poss="0.5" Drop="0.2"/>
+	<Item Id="Meat" Poss="0.1" Drop="0.2"/>
+	<Item Id="Meat" Poss="0.1" Drop="0.2"/>
+
+</PawnSetup>
